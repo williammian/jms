@@ -11,7 +11,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 
-public class TesteBrowser {
+public class TesteBrowserFila {
 	
 	public static void main(String[] args) throws Exception {
 		

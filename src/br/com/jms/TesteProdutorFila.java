@@ -10,7 +10,7 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.naming.InitialContext;
 
-public class TesteProdutor {
+public class TesteProdutorFila {
 	
 	public static void main(String[] args) throws Exception {
 		//se utilizado Properties, então não precisa utilizar o arquivo jndi.properties
