@@ -20,7 +20,7 @@ public class TesteConsumidorTopicoComercial {
 		InitialContext context = new InitialContext(); 
         ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
         
-        Connection connection = factory.createConnection();
+        Connection connection = factory.createConnection("user", "senha");
         connection.setClientID("comercial"); //identificar a conexão
         connection.start();
 

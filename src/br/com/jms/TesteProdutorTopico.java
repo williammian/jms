@@ -15,7 +15,7 @@ public class TesteProdutorTopico {
 		InitialContext context = new InitialContext();
 		ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
 
-		Connection connection = factory.createConnection();
+		Connection connection = factory.createConnection("user", "senha");
 		connection.start();
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		

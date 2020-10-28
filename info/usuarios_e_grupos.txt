@@ -1,0 +1,32 @@
+adicionar no arquivo conf/activemq.xml os usuários, senhas e seus grupos através do <simpleAuthenticationPlugin>
+
+No XML, logo após o elemento <broker ...>
+
+<plugins>
+  <simpleAuthenticationPlugin anonymousAccessAllowed="false">
+    <users>
+        <authenticationUser username="admin" password="admin" groups="users,admins"/>
+        <authenticationUser username="user" password="senha" groups="users"/>
+        <authenticationUser username="guest" password="senha" groups="guests"/>
+    </users>
+  </simpleAuthenticationPlugin>
+
+  <authorizationPlugin>
+    <map>
+      <authorizationMap>
+        <authorizationEntries>
+          <authorizationEntry queue="fila.financeiro" read="users" write="users" admin="users,admins" />
+          <authorizationEntry topic="loja" read="users" write="users" admin="users,admins" />
+          <authorizationEntry topic="ActiveMQ.Advisory.>" read="users,admins" write="users,admins" admin="users,admins"/>
+        </authorizationEntries>
+        <tempDestinationAuthorizationEntry>
+          <tempDestinationAuthorizationEntry read="admin" write="admin" admin="admin"/>
+        </tempDestinationAuthorizationEntry>
+      </authorizationMap>
+    </map>
+  </authorizationPlugin>
+</plugins>
+
+No java, fazer a autenticação
+
+Connection connection = cf.createConnection("user", "senha");
