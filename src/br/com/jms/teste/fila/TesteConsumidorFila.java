@@ -1,5 +1,7 @@
 package br.com.jms.teste.fila;
 
+import java.util.Scanner;
+
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -40,8 +42,8 @@ public class TesteConsumidorFila {
 
         });
         
-        System.out.println("Conectado...");
-        //new Scanner(System.in).nextLine();
+        //System.out.println("Conectado...");
+        new Scanner(System.in).nextLine();
 
         session.close();
         connection.close();
