@@ -1,4 +1,4 @@
-package br.com.jms;
+package br.com.jms.teste.topico;
 
 import java.util.Scanner;
 
@@ -13,21 +13,21 @@ import javax.jms.TextMessage;
 import javax.jms.Topic;
 import javax.naming.InitialContext;
 
-public class TesteConsumidorTopicoEstoqueSelector {
+public class TesteConsumidorTopicoComercialAutorizacao {
 	
 	public static void main(String[] args) throws Exception {
 		
 		InitialContext context = new InitialContext(); 
         ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
         
-        Connection connection = factory.createConnection();
-        connection.setClientID("estoque"); //identificar a conexão
+        Connection connection = factory.createConnection("user", "senha");
+        connection.setClientID("comercial"); //identificar a conexão
         connection.start();
 
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
         
         Topic topico = (Topic) context.lookup("loja");
-        MessageConsumer consumer = session.createDurableSubscriber(topico, "assinatura-selector", "ebook is null OR ebook=false", false);
+        MessageConsumer consumer = session.createDurableSubscriber(topico, "assinatura");
         
         consumer.setMessageListener(new MessageListener(){
 

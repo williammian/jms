@@ -1,4 +1,4 @@
-package br.com.jms;
+package br.com.jms.teste.topico;
 
 import java.util.Scanner;
 
@@ -13,7 +13,7 @@ import javax.jms.TextMessage;
 import javax.jms.Topic;
 import javax.naming.InitialContext;
 
-public class TesteConsumidorTopicoEstoque {
+public class TesteConsumidorTopicoComercial {
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -21,7 +21,7 @@ public class TesteConsumidorTopicoEstoque {
         ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
         
         Connection connection = factory.createConnection();
-        connection.setClientID("estoque"); //identificar a conexão
+        connection.setClientID("comercial"); //identificar a conexão
         connection.start();
 
         Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);

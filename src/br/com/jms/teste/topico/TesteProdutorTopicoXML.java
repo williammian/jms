@@ -1,4 +1,6 @@
-package br.com.jms;
+package br.com.jms.teste.topico;
+
+import java.io.StringWriter;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -7,8 +9,12 @@ import javax.jms.Message;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.naming.InitialContext;
+import javax.xml.bind.JAXB;
 
-public class TesteProdutorTopicoSelector {
+import br.com.jms.modelo.Pedido;
+import br.com.jms.modelo.PedidoFactory;
+
+public class TesteProdutorTopicoXML {
 	
 	public static void main(String[] args) throws Exception {
 				
@@ -22,8 +28,16 @@ public class TesteProdutorTopicoSelector {
 		Destination topico = (Destination) context.lookup("loja");
 		MessageProducer producer = session.createProducer(topico);
 		
-		Message message = session.createTextMessage("<pedido><id>223</id></pedido>");
-		message.setBooleanProperty("ebook", false);
+		Pedido pedido = new PedidoFactory().geraPedidoComValores();
+
+		StringWriter writer = new StringWriter();
+
+		JAXB.marshal(pedido, writer);
+
+		String xml = writer.toString();
+
+		Message message = session.createTextMessage(xml);
+		
 		producer.send(message);
 		
 		session.close();

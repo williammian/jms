@@ -1,4 +1,4 @@
-package br.com.jms;
+package br.com.jms.teste.fila;
 
 import java.util.Properties;
 

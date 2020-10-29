@@ -1,4 +1,4 @@
-package br.com.jms;
+package br.com.jms.teste.topico;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -15,7 +15,7 @@ public class TesteProdutorTopico {
 		InitialContext context = new InitialContext();
 		ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
 
-		Connection connection = factory.createConnection("user", "senha");
+		Connection connection = factory.createConnection();
 		connection.start();
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		
