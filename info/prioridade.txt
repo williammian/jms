@@ -1,0 +1,8 @@
+Precisamos colocar no XML do ActiveMQ a configuração
+
+<destinationPolicy>
+  <policyMap>
+    <policyEntries>
+      <policyEntry queue=">" prioritizedMessages="true"/>
+      
+      ....
